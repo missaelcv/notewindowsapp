@@ -1,17 +1,21 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
-  </q-page>
+  <div class="q-pa-md q-gutter-sm">
+    <q-editor v-model="editor" min-height="5rem" />
+      
+    <q-card flat bordered>
+      <q-card-section v-html="editor" />
+    </q-card>
+  </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { ref } from 'vue'
 
-export default defineComponent({
-  name: 'PageIndex'
-})
+export default {
+  setup () {
+    return {
+      editor: ''
+    }
+  }
+}
 </script>

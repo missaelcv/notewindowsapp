@@ -8,8 +8,7 @@
           round
           @click="leftDrawerOpen = !leftDrawerOpen"
           icon="menu"
-          aria-label="Menu"
-        />
+          aria-label="Menu"/>
 
         <q-toolbar-title>
           App de notas
