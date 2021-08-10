@@ -21,8 +21,12 @@
 
       
       
-    <q-card flat bordered v-for="(item,index) in tasks" :key="index" >
-      <q-card-section v-html="item.texto" />
+    <q-card class="row"
+    flat bordered v-for="(item,index) in tasks" :key="index" >
+      <q-card-section class="col" v-html="item.texto" 
+      :class="item.estado ? 'tachar' : ''" />
+      <q-btn flat color="blue" @click="item.estado = !item.estado">Acción</q-btn>
+       <q-btn flat color="red" @click="eliminar(index)">Eliminar</q-btn>
     </q-card>
   </div>
 </template>
@@ -37,7 +41,7 @@ export default {
       editor: '',
       tasks: [
         {texto: 'Nota #1', estado: false},
-        {texto: 'Nota #2', estado: true},
+        {texto: 'Nota #2', estado: false},
         {texto: 'Nota #3', estado: false},
       ]
     }
@@ -62,7 +66,24 @@ export default {
           textColor: 'white',
           icon: 'warning'
         })
-      }
-  }
+      },
+  eliminar(index){
+   this.$q.dialog({
+    title: 'Adventencia',
+    message: 'Esta seguro de eliminar su nota',
+    cancel: true,
+    persistent: true
+  }).onOk(() => {
+    // console.log('>>>> OK')
+     this.tasks.splice(index, 1);
+  })
+}
+}
 }
 </script>
+
+<style>
+  .tachar {
+    text-decoration: line-through;
+  }
+</style>
