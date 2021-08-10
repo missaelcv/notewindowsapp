@@ -1,7 +1,6 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-editor
-      v-model="editor"
+    <q-editor v-model="editor"
       :definitions="{
         save: {
           tip: 'Guardar task',
@@ -18,11 +17,12 @@
       }"
       :toolbar="[
         ['bold', 'italic', 'strike', 'underline'],
-        ['upload', 'save']
-      ]"/>
+        ['upload', 'save']]"/>
+
       
-    <q-card flat bordered>
-      <q-card-section v-html="editor" />
+      
+    <q-card flat bordered v-for="(item,index) in tasks" :key="index" >
+      <q-card-section v-html="item.texto" />
     </q-card>
   </div>
 </template>
@@ -32,15 +32,24 @@ import { ref } from 'vue'
 import { useQuasar } from 'quasar'
 
 export default {
-  setup () {
+  data () {
     return {
-      editor: ''
+      editor: '',
+      tasks: [
+        {texto: 'Nota #1', estado: false},
+        {texto: 'Nota #2', estado: true},
+        {texto: 'Nota #3', estado: false},
+      ]
     }
   },
   methods:{
    saveWork () {
+     this.tasks.push({
+       texto: this.editor,
+       estado: false
+     })
         this.$q.notify({
-          message: 'Su Archivo ha sido Guardado en su Nube.',
+          message: 'Nota Guardada',
           color: 'green-4',
           textColor: 'white',
           icon: 'cloud_done'
