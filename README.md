@@ -207,7 +207,7 @@ electron: {
 ```
 
 ### Ejecutar para Windows wind32:
-```bash
+```javascript
 quasar build -m electron
 ```
 
