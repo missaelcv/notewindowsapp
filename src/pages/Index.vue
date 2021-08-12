@@ -27,7 +27,12 @@
       :class="item.estado ? 'tachar' : ''" />
       <q-btn flat color="blue" @click="item.estado = !item.estado">Acción</q-btn>
        <q-btn flat color="red" @click="eliminar(index)">Eliminar</q-btn>
+
+               
     </q-card>
+     <div v-if="tasks.length == 0" class="flex flex-center">
+                <p class="text-h6">Sin notas</p>
+                </div>
   </div>
 </template>
 
@@ -40,9 +45,9 @@ export default {
     return {
       editor: '',
       tasks: [
-        {texto: 'Nota #1', estado: false},
-        {texto: 'Nota #2', estado: false},
-        {texto: 'Nota #3', estado: false},
+      //    {texto: 'Nota #1', estado: false},
+      //    {texto: 'Nota #2', estado: false},
+      //    {texto: 'Nota #3', estado: false},
       ]
     }
   },
