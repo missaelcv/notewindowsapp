@@ -11,10 +11,10 @@
           aria-label="Menu"/>
 
         <q-toolbar-title>
-          App de notas
+         Note Link
         </q-toolbar-title>
 
-        <div>App Mcv</div>
+        <div>version 1.1</div>
       </q-toolbar>
     </q-header>
 
