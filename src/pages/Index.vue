@@ -39,6 +39,7 @@
 <script>
 import { ref } from 'vue'
 import { useQuasar } from 'quasar'
+import VuePageTitle from 'vue-page-title'
 
 export default {
   data () {
@@ -85,6 +86,7 @@ export default {
 }
 }
 }
+
 </script>
 
 <style>
