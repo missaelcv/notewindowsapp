@@ -1,4 +1,6 @@
 <template>
+
+<div class="col-12 col-sm-12">
   <div class="q-pa-md q-gutter-sm">
     <q-editor v-model="editor"
       :definitions="{
@@ -19,8 +21,6 @@
         ['bold', 'italic', 'strike', 'underline'],
         ['upload', 'save']]"/>
 
-      
-      
     <q-card class="row"
     flat bordered v-for="(item,index) in tasks" :key="index" >
       <q-card-section class="col" v-html="item.texto" 
@@ -31,8 +31,9 @@
                
     </q-card>
      <div v-if="tasks.length == 0" class="flex flex-center">
-                <p class="text-h6">Sin notas</p>
+                <p class="text-h6">Sin Notas</p>
                 </div>
+                  </div>
   </div>
 </template>
 
