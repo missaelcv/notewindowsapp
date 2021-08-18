@@ -1,50 +1,70 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          @click="leftDrawerOpen = !leftDrawerOpen"
-          icon="menu"
-          aria-label="Menu"/>
+    <q-layout view="lHh Lpr lff">
+      <q-header elevated class="bg-primary">
+        <q-toolbar>
+          <q-toolbar-title class="bg-gray">App The Note</q-toolbar-title>
+          <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
+        </q-toolbar>
+      </q-header>
 
-        <q-toolbar-title>
-         Note Link
-        </q-toolbar-title>
+      <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="400">
 
-        <div>version 1.1</div>
-      </q-toolbar>
-    </q-header>
+        <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+          <q-list padding>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-2"
-    >
-      <q-list>
-        <q-item-label header>Menú de Navegacion</q-item-label>
-        <q-item clickable to="/">
-          <q-item-section avatar>
-            <q-icon name="school" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Notas</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </q-drawer>
+            <q-item clickable v-ripple to="/"  active-class="my-menu-link" exact>
+              <q-item-section avatar>
+                <q-icon name="inbox" />
+              </q-item-section>
+            
+              <q-item-section>
+                Inicio
+              </q-item-section>
+            </q-item>
+          
+            <q-item clickable v-ripple to="nueva" active-class="my-menu-link">
+              <q-item-section avatar>
+                <q-icon name="star" />
+              </q-item-section>
 
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-  </q-layout>
+              <q-item-section>
+               New Notas
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple to="ordenar" active-class="my-menu-link">
+              <q-item-section avatar>
+                <q-icon name="drafts" />
+              </q-item-section>
+
+              <q-item-section>
+                 Ordenar Notas
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-scroll-area>
+
+        <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
+          <div class="absolute-bottom bg-transparent">
+            <q-avatar size="56px" class="q-mb-sm">
+              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+            </q-avatar>
+            <div class="text-weight-bold">Bloc and Notes</div>
+            <div>@blocandNote</div>
+          </div>
+        </q-img>
+      </q-drawer>
+
+      <q-page-container>
+        <router-view></router-view>
+      </q-page-container>
+    </q-layout>
 </template>
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
+
+import { defineComponent, ref } from 'vue'
 
 const linksList = [
   {
@@ -55,25 +75,23 @@ const linksList = [
   }
 ];
 
-import { defineComponent, ref } from 'vue'
 
-export default defineComponent({
-  name: 'MainLayout',
-
-  components: {
-    EssentialLink
-  },
-
+export default {
   setup () {
-    const leftDrawerOpen = ref(false)
+    const drawer = ref(false)
 
     return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+      drawer 
     }
   }
-})
+}
 </script>
+
+
+<style lang="scss">
+.my-menu-link {
+  color: red;
+  background: #F2C037
+}
+  
+</style>
