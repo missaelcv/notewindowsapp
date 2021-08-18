@@ -1,21 +1,41 @@
 <template>
+  <div class="col-12 col-sm-6">
 
-<div class="jumbotron flex flex-center">
-  <h4 class="display-4"> Welcome to app Notes!</h4>
+    <q-table grid class="text-center"
+      grid-header
+      :rows="rows"
+      :columns="columns"
+      row-key="name"
+      :filter="filter"
+      hide-header>
+
+      <template v-slot:top-right >
+        <q-input class="text-rigth" borderless dense debounce="300" v-model="filter" placeholder="Search" align='rigth'>
+          <template v-slot:append>
+            <q-icon  name="search" />
+          </template>
+            </q-input>
+          </template>
+        </q-table>
+
+    <div class="q-pa-md q-gutter-sm" style="max-width: 400px">
+  <div class="jumbotron flex flex-center">
+  <h4 class="display-4 q-mr-xs text-center"> Welcome to app Notes!</h4>
   <h7 class="lead text-center">Esta aplicacion te ayudara a crear tus apuntes donde podras recorda con 
   tiempo y apunte rapidos que te ayudara para que no te falten cualquier dato importante 
   que vallas a necesitar para futuros usos...</h7>
   <hr class="my-4">
+  </div>
+  
+   <div class="text-center">
   <h8 class="text-center">Empieza a crear notas ya!!</h8>
+ </div>
+   </div>
 
-  <a class="btn btn-primary btn-lx text-center" href="#" role="button">Learn More</a>
-  </div>
-  <div div class="container-fluid">
-  <div class="flex flex-center .col-6 .col-md-4">
-    <p class="text-h6">Sin notas</p>
-
-             </div>  
-  </div>
+        <div class="text-center">
+        <q-btn class="q-pa-ms  text-center" color="positive" href="#http://localhost:8081/#/nueva" label="New Note" />
+        </div>
+         </div>
 </template>
 
 <script>
@@ -25,12 +45,39 @@ import { useQuasar } from 'quasar'
 
 export default {
   setup () {
-    
+    const columns = [
+  {
+    name: 'oneNote',
+    required: true,
+   
+    align: 'center',
+    field: row => row.name,
+    sortable: true
+  },
+   {
+    name: 'oneNote',
+    required: true,
+    //label: 'Note No. 2',
+    align: 'center',
+    field: row => row.name2,
+    sortable: true
+  }
+]
+
+const rows = [
+  {
+    name: 'Aqui Mostrara las tablas creadas', 
+  }  
+]
+
 
     return {
+      filter: ref(''),
+      columns,
+      rows,
+      val: ref(true)  
      
     }
   }
 }
 </script>
-
