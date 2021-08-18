@@ -1,96 +1,36 @@
 <template>
-  <div class="q-pa-md q-gutter-sm">
-    <q-editor v-model="editor"
-      :definitions="{
-        save: {
-          tip: 'Guardar task',
-          icon: 'save',
-          label: 'Guardar',
-          handler: saveWork
-        },
-        upload: {
-          tip: 'Actualizar Nube',
-          icon: 'cloud_upload',
-          label: 'Actualizar',
-          handler: uploadIt
-        }
-      }"
-      :toolbar="[
-        ['bold', 'italic', 'strike', 'underline'],
-        ['upload', 'save']]"/>
 
-      
-      
-    <q-card class="row"
-    flat bordered v-for="(item,index) in tasks" :key="index" >
-      <q-card-section class="col" v-html="item.texto" 
-      :class="item.estado ? 'tachar' : ''" />
-      <q-btn flat color="blue" @click="item.estado = !item.estado">Acción</q-btn>
-       <q-btn flat color="red" @click="eliminar(index)">Eliminar</q-btn>
+<div class="jumbotron flex flex-center">
+  <h4 class="display-4"> Welcome to app Notes!</h4>
+  <h7 class="lead text-center">Esta aplicacion te ayudara a crear tus apuntes donde podras recorda con 
+  tiempo y apunte rapidos que te ayudara para que no te falten cualquier dato importante 
+  que vallas a necesitar para futuros usos...</h7>
+  <hr class="my-4">
+  <h8 class="text-center">Empieza a crear notas ya!!</h8>
 
-               
-    </q-card>
-     <div v-if="tasks.length == 0" class="flex flex-center">
-                <p class="text-h6">Sin notas</p>
-                </div>
+  <a class="btn btn-primary btn-lx text-center" href="#" role="button">Learn More</a>
+  </div>
+  <div div class="container-fluid">
+  <div class="flex flex-center .col-6 .col-md-4">
+    <p class="text-h6">Sin notas</p>
+
+             </div>  
   </div>
 </template>
 
 <script>
+
 import { ref } from 'vue'
 import { useQuasar } from 'quasar'
-import VuePageTitle from 'vue-page-title'
 
 export default {
-  data () {
-    return {
-      editor: '',
-      tasks: [
-      //    {texto: 'Nota #1', estado: false},
-      //    {texto: 'Nota #2', estado: false},
-      //    {texto: 'Nota #3', estado: false},
-      ]
-    }
-  },
-  methods:{
-   saveWork () {
-     this.tasks.push({
-       texto: this.editor,
-       estado: false
-     })
-        this.$q.notify({
-          message: 'Nota Guardada',
-          color: 'green-4',
-          textColor: 'white',
-          icon: 'cloud_done'
-        })
-      },
-      uploadIt () {
-       this.$q.notify({
-          message: 'Servidor Invalido Intente Conectar.',
-          color: 'red-5',
-          textColor: 'white',
-          icon: 'warning'
-        })
-      },
-  eliminar(index){
-   this.$q.dialog({
-    title: 'Adventencia',
-    message: 'Esta seguro de eliminar su nota',
-    cancel: true,
-    persistent: true
-  }).onOk(() => {
-    // console.log('>>>> OK')
-     this.tasks.splice(index, 1);
-  })
-}
-}
-}
+  setup () {
+    
 
+    return {
+     
+    }
+  }
+}
 </script>
 
-<style>
-  .tachar {
-    text-decoration: line-through;
-  }
-</style>
