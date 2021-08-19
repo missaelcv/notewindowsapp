@@ -12,29 +12,28 @@
       <template v-slot:top-right >
         <q-input class="text-rigth" borderless dense debounce="300" v-model="filter" placeholder="Search" align='rigth'>
           <template v-slot:append>
-            <q-icon  name="search" />
+          <q-icon  name="search" />
           </template>
-            </q-input>
+          </q-input>
           </template>
         </q-table>
 
-    <div class="q-pa-md q-gutter-sm" style="max-width: 400px">
+  <div class="q-pa-md q-gutter-sm" style="max-width: 400px">
   <div class="jumbotron flex flex-center">
   <h4 class="display-4 q-mr-xs text-center"> Welcome to app Notes!</h4>
-  <h7 class="lead text-center">Esta aplicacion te ayudara a crear tus apuntes donde podras recorda con 
+  <h6 class="lead text-center">Esta aplicacion te ayudara a crear tus apuntes donde podras recorda con 
   tiempo y apunte rapidos que te ayudara para que no te falten cualquier dato importante 
-  que vallas a necesitar para futuros usos...</h7>
+  que vallas a necesitar para futuros usos...</h6>
   <hr class="my-4">
   </div>
   
    <div class="text-center">
-  <h8 class="text-center">Empieza a crear notas ya!!</h8>
- </div>
-   </div>
-
+  <h6 class="text-center">Empieza a crear notas ya!!</h6>
         <div class="text-center">
         <q-btn class="q-pa-ms  text-center" color="positive" href="#http://localhost:8081/#/nueva" label="New Note" />
         </div>
+         </div>
+         </div>
          </div>
 </template>
 
@@ -49,7 +48,6 @@ export default {
   {
     name: 'oneNote',
     required: true,
-   
     align: 'center',
     field: row => row.name,
     sortable: true
@@ -57,7 +55,6 @@ export default {
    {
     name: 'oneNote',
     required: true,
-    //label: 'Note No. 2',
     align: 'center',
     field: row => row.name2,
     sortable: true
@@ -66,17 +63,14 @@ export default {
 
 const rows = [
   {
-    name: 'Aqui Mostrara las tablas creadas', 
+    name: 'Aqui Mostrara las tablas nuevas', 
   }  
 ]
-
-
     return {
       filter: ref(''),
       columns,
       rows,
       val: ref(true)  
-     
     }
   }
 }

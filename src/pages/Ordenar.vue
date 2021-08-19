@@ -1,16 +1,14 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-btn label="Historial" color="primary" @click="dialog = true" />
-
-    <q-btn label="Clear Historial" color="negative" @click="dialog = true" />
+    <q-btn label="Informacion" color="primary" @click="dialog = true" />
 
     <q-dialog
       v-model="dialog"
       persistent
       :maximized="maximizedToggle"
       transition-show="slide-up"
-      transition-hide="slide-down"
-    >
+      transition-hide="slide-down">
+
       <q-card class="bg-primary text-white">
         <q-bar>
           <q-space />
@@ -27,11 +25,15 @@
         </q-bar>
 
         <q-card-section>
-          <div class="text-h5 text-color-red" >Alerta</div>
+          <div class="text-h5 text-color-red">Informacion</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
         Todas las notas aqui en presente vista son las ultimas notas vista modificadas.
+        <br> <br>
+
+        Esta aplicacion tiene versiones desde 1.0 hasta 1.5 
+
         </q-card-section>
       </q-card>
     </q-dialog>
