@@ -12,7 +12,7 @@
                 </div>
 
                  <div class="col-12 col-sm-6">
-                 <q-select label="Prioridad" v-model="seleccion"/>
+                 <q-select label="Prioridad" v-model="seleccion" :options="opciones"/>
                 </div>
 
 
@@ -34,10 +34,12 @@ export default {
     setup() {
         const nota = ref(null)
         const seleccion = ref(null)
+        const opciones = ['Maxima', 'Regular','Minima']
 
         return {
             nota,
-            seleccion
+            seleccion,
+            opciones
         }
     },
 }
