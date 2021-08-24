@@ -31,12 +31,17 @@
         <q-card-section class="q-pt-none">
         Todas las notas aqui en presente vista son las ultimas notas vista modificadas.
         <br> <br>
-
         Esta aplicacion tiene versiones desde 1.0 hasta 1.5 
-
         </q-card-section>
-      </q-card>
+
+    </q-card>
     </q-dialog>
+
+     <q-card-section>
+        <div class="text-h6">Our Changing Planet</div>
+        <div class="text-subtitle2">by John Doe</div>
+      </q-card-section>
+
   </div>
 </template>
 
@@ -53,3 +58,10 @@ export default {
   }
 }
 </script>
+
+
+<style lang="sass" scoped>
+.my-card
+  width: 100%
+  max-width: 250px
+</style>
