@@ -6,9 +6,7 @@
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
         </q-toolbar>
       </q-header>
-
-      <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="400">
-
+      <q-drawer v-model="drawer" :width="200" :persistent='false' >
         <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
           <q-list padding>
 
@@ -39,6 +37,16 @@
 
               <q-item-section>
                  Ordenar Notas
+              </q-item-section>
+            </q-item>
+
+             <q-item clickable v-ripple to="agregar" active-class="my-menu-link">
+              <q-item-section avatar>
+                <q-icon name="drafts" />
+              </q-item-section>
+
+              <q-item-section>
+              Agregar 
               </q-item-section>
             </q-item>
           </q-list>
