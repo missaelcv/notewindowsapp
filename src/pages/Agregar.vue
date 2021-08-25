@@ -5,7 +5,8 @@
         {{nota}}-{{seleccion}}-{{terminos}}
         <q-form class="row q-col-gutter-md"
         @submit.prevent = "procesarNota"
-        @reset="reset">
+        @reset="reset"
+        ref="myForm">
 
                 <div class="col-12 col-sm-6">
                  <q-input label="nota" v-model="nota" 
@@ -38,6 +39,7 @@ import { ref } from 'vue'
 
 export default {
     setup() {
+        const $q = useQuasar()
         const nota = ref(null)
         const seleccion = ref(null)
         const terminos = ref(false)
@@ -45,9 +47,25 @@ export default {
 
         const procesarNota = () => {
             console.log('clic de nota en consola')
-            if(terminos.value === false)
-            alert('Falto los términos')
+            if(terminos.value === false){
+            $q.notify({
+            color: 'red-5',
+            textColor: 'white',
+            icon: 'warning',
+            message: 'You need to accept the license and terms first'
+          })
+        } else {
+          $q.notify({
+            color: 'green-4',
+            textColor: 'white',
+            icon: 'cloud_done',
+            message: 'Submitted'
+          })
+
+          onreset();
         }
+      },
+
         const reset = () => {
             nota.value = null
             seleccion.value = null
