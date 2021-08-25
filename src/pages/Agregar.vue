@@ -5,8 +5,7 @@
         {{nota}}-{{seleccion}}-{{terminos}}
         <q-form class="row q-col-gutter-md"
         @submit.prevent = "procesarNota"
-        @reset="reset"
-        ref="myForm">
+        @reset="reset">
 
                 <div class="col-12 col-sm-6">
                  <q-input label="nota" v-model="nota" 
@@ -52,17 +51,14 @@ export default {
             color: 'red-5',
             textColor: 'white',
             icon: 'warning',
-            message: 'You need to accept the license and terms first'
-          })
+            message: 'You need to accept the license and terms first' })
+            
         } else {
           $q.notify({
             color: 'green-4',
             textColor: 'white',
             icon: 'cloud_done',
-            message: 'Submitted'
-          })
-
-          onreset();
+            message: 'Submitted'})
         }
       },
 
