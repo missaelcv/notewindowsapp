@@ -24,7 +24,7 @@
                 </div>
         
             <div class="col-12 col-sm-12">
-            <q-editor v-model="editor"
+            <q-editor v-model="qeditor"  :dense="$q.screen.lt.md"
                 :definitions="{
                     save: {
                     tip: 'Guardar task',
@@ -37,11 +37,14 @@
                     icon: 'cloud_upload',
                     label: 'Actualizar',
                     handler: uploadIt
-                    }
+                    },
+                    
                 }"
+
                 :toolbar="[
-                    ['bold', 'italic', 'strike', 'underline'],
-                    ['upload', 'save']]"/>
+                    ['bold', 'italic', 'strike', 'underline','arial',],
+                    ['upload', 'save']]"
+                 />
             </div>
 
         <div class="col-12 col-sm-12">
@@ -114,6 +117,9 @@ export default {
             terminos.value = false 
         }
         return {
+             qeditor: ref(
+        ''
+      ),
             
             Nota,
             seleccion,
@@ -157,6 +163,8 @@ export default {
   }).onOk(() => {
      this.tasks.splice(index, 1);
   })
+
+  
 }
 }
 }

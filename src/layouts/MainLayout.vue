@@ -42,7 +42,7 @@
 
              <q-item clickable v-ripple to="agregar" active-class="my-menu-link">
               <q-item-section avatar>
-                <q-icon name="drafts" />
+                <q-icon name="inbox" />
               </q-item-section>
 
               <q-item-section>
