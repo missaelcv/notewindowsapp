@@ -9,14 +9,12 @@
         ref="myForm">
       
                 <div class="col-12 col-sm-6">
-
                  <q-input label="Nombre de la nota" v-model="Nota" 
                  lazy-rules
                  :rules="[ val => val && val.length > 0 || 'No Puede estar en blanco']"/>
                 </div>
 
                  <div class="col-12 col-sm-6">
-
                  <q-select label="Prioridad de su nota" v-model="seleccion" 
                  :options="opciones"
                  lazy-rules
@@ -41,8 +39,7 @@
                 }"
                 :toolbar="[
                     ['bold', 'italic', 'strike', 'underline'],
-                    ['upload', 'save']]"
-                 />
+                    ['upload', 'save']]"/>
             </div>
 
         <div class="col-12 col-sm-12">
@@ -65,21 +62,27 @@
          </div>
                
          <div class="col-12 col-sm-12">
-         <q-btn label="Submit" color="secondary" type="submit"/>
+         <q-btn label="Submit" color="dark" type="submit"/>
          <q-btn label="Reset" color="brown-5" outline class="q-ml-sm" type="reset"/>
          </div>
          
          </q-form>
- 
+
+         <pinta-notas>
+             
         </q-page>
 </template>
 
 <script>
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
+import { colors } from 'quasar'
+import PintaNotas from 'src/components/PintaNotas.vue'
 
 export default {
+  components: { PintaNotas },
     setup() {
+        
         const myForm = ref(null);
         const $q = useQuasar()
         const Nota = ref(null)
@@ -118,7 +121,6 @@ export default {
              editor: ref(
         ''
       ),
-            
             Nota,
             seleccion,
             opciones,
@@ -128,7 +130,9 @@ export default {
             myForm,
 
          editor: '',
-      tasks: []
+      tasks: [ 
+      {texto: 'No.1', estado: false},
+      ]
       }
   },
   methods:{
@@ -152,20 +156,21 @@ export default {
           icon: 'warning'
         })
       },
-  eliminar(index){
+ eliminar(index){
    this.$q.dialog({
     title: 'Adventencia',
     message: 'Esta seguro de eliminar su nota',
     cancel: true,
     persistent: true
   }).onOk(() => {
+      console.log(index);
      this.tasks.splice(index, 1);
+    
   })
+}
+}
+}
 
-  
-}
-}
-}
 </script>
 
 <style>

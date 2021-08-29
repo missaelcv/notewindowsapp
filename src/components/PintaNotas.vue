@@ -1,5 +1,4 @@
 <template>
     <q-table 
-    title="Notas"/>
-    
+    title="Formulario"/>
 </template>
