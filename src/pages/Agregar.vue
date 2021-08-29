@@ -2,7 +2,7 @@
     <q-page padding>
         
         <h5 class="text-center">Agregar Nueva Nota</h5>
-        {{Nota}}-{{seleccion}}-{{terminos}}
+      
         <q-form class="row q-col-gutter-md"
         @submit.prevent = "procesarNota"
         @reset="reset"
@@ -23,50 +23,48 @@
                  :rules="[ val => val && val.length > 0 || 'No Puede estar en blanco']"/>
                 </div>
         
-    <div class="col-12 col-sm-12">
-    <q-editor v-model="editor"
-      :definitions="{
-        save: {
-          tip: 'Guardar task',
-          icon: 'save',
-          label: 'Guardar',
-          handler: saveWork
-        },
-        upload: {
-          tip: 'Actualizar Nube',
-          icon: 'cloud_upload',
-          label: 'Actualizar',
-          handler: uploadIt
-        }
-      }"
-      :toolbar="[
-        ['bold', 'italic', 'strike', 'underline'],
-        ['upload', 'save']]"/>
-               </div>
-
-            <q-card class="row"
-            flat bordered v-for="(item,index) in tasks" :key="index" >
-                <q-card-section class="col" v-html="item.texto" 
-                :class="item.estado ? 'tachar' : ''" />
-                <q-btn flat color="blue" @click="item.estado = !item.estado">Acción</q-btn>
-                <q-btn flat color="red" @click="eliminar(index)">Eliminar</q-btn>
-
-             </q-card>
-            <div v-if="tasks.length == 0" class="flex flex-center">
-            <p class="text-h6">Sin Notas</p>
+            <div class="col-12 col-sm-12">
+            <q-editor v-model="editor"
+                :definitions="{
+                    save: {
+                    tip: 'Guardar task',
+                    icon: 'save',
+                    label: 'Guardar',
+                    handler: saveWork
+                    },
+                    upload: {
+                    tip: 'Actualizar Nube',
+                    icon: 'cloud_upload',
+                    label: 'Actualizar',
+                    handler: uploadIt
+                    }
+                }"
+                :toolbar="[
+                    ['bold', 'italic', 'strike', 'underline'],
+                    ['upload', 'save']]"/>
             </div>
 
-  
-                <div class="col-12" >
-                    <q-toggle label = "Aceptar los Términos" 
-                    v-model="terminos"/>
-                </div>
+        <div class="col-12 col-sm-12">
+        <q-card class="row"
+        flat bordered v-for="(item,index) in tasks" :key="index" >
+          
+        <q-card-section class="col" v-html="item.texto" 
+        :class="item.estado ? 'tachar' : ''" />
+        <q-btn flat color="blue" @click="item.estado = !item.estado">Acción</q-btn>
+        <q-btn flat color="red" @click="eliminar(index)">Eliminar</q-btn>
+                 
+        </q-card>
+        <div v-if="tasks.length == 0" class="flex flex-center">
+        <p class="text-h6">Sin Notas</p>
+        </div>
+        </div>
+
+         <div class="col-12" >
+         <q-toggle label = "Aceptar los Términos " v-model="terminos"/>
+         </div>
                
-
-          <div class="col-12 col-sm-12">
-
-        <q-btn label="Submit" color="secondary" type="submit"/>
-
+         <div class="col-12 col-sm-12">
+         <q-btn label="Submit" color="secondary" type="submit"/>
          <q-btn label="Reset" color="brown-5" outline class="q-ml-sm" type="reset"/>
          </div>
          
@@ -95,7 +93,7 @@ export default {
                     color: 'red-5',
                     textColor: 'white',
                     icon: 'warning',
-                    message: 'Debe Aceptar los terminos primero'
+                    message: 'Debe Aceptar los terminos y llenar el espacio de nota'
               })
             }else {
                 $q.notify({
@@ -126,12 +124,8 @@ export default {
             myForm,
 
          editor: '',
-      tasks: [
-      //    {texto: 'Nota #1', estado: false},
-      //    {texto: 'Nota #2', estado: false},
-      //    {texto: 'Nota #3', estado: false},
-      ]
-    }
+      tasks: []
+      }
   },
   methods:{
    saveWork () {
@@ -161,11 +155,15 @@ export default {
     cancel: true,
     persistent: true
   }).onOk(() => {
-    // console.log('>>>> OK')
      this.tasks.splice(index, 1);
   })
 }
 }
 }
-
 </script>
+
+<style>
+  .tachar {
+    text-decoration: line-through;
+  }
+</style>
