@@ -22,8 +22,7 @@
                  lazy-rules
                  :rules="[ val => val && val.length > 0 || 'No Puede estar en blanco']"/>
                 </div>
-
-              
+        
     <div class="col-12 col-sm-12">
     <q-editor v-model="editor"
       :definitions="{
@@ -45,11 +44,6 @@
         ['upload', 'save']]"/>
                </div>
 
-                 <div class="col-12" >
-                    <q-toggle label = "Aceptar los Términos" 
-                    v-model="terminos"/>
-                </div>
-
             <q-card class="row"
             flat bordered v-for="(item,index) in tasks" :key="index" >
                 <q-card-section class="col" v-html="item.texto" 
@@ -62,15 +56,22 @@
             <p class="text-h6">Sin Notas</p>
             </div>
 
-            <div class="col-12">
+  
+                <div class="col-12" >
+                    <q-toggle label = "Aceptar los Términos" 
+                    v-model="terminos"/>
+                </div>
+               
+
+          <div class="col-12 col-sm-12">
+
         <q-btn label="Submit" color="secondary" type="submit"/>
 
          <q-btn label="Reset" color="brown-5" outline class="q-ml-sm" type="reset"/>
          </div>
-         </q-form>
-
-        
          
+         </q-form>
+ 
         </q-page>
 </template>
 
