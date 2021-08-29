@@ -68,8 +68,8 @@
          
          </q-form>
 
-         <pinta-notas>
-             
+         <pinta-notas/>
+
         </q-page>
 </template>
 
