@@ -38,8 +38,14 @@ module.exports = configure(function (ctx) {
       // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
-      'roboto-font', // optional, you are not bound to it
-      'material-icons', // optional, you are not bound to it
+  'material-icons',
+  'mdi-v5',
+  'ionicons-v4',
+  'eva-icons',
+  'fontawesome-v5',
+  'themify',
+  'line-awesome',
+  'bootstrap-icons' // optional, you are not bound to it
     ],
 
     // Full list of options: https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
@@ -78,6 +84,7 @@ module.exports = configure(function (ctx) {
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
+      iconSet: 'fontawesome-v5-pro',
       config: {
         brand: {
           primary: '#26a69a',
