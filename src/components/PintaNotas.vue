@@ -1,18 +1,19 @@
 <template>
     <q-table class="q-mt-md"
     no-data-label="Sin nota para mostrar"
-    title="Formulario"
-    :columns= 'columns'/>
+    title="Notas Creadas"
+    :columns= 'columns'
+    :rows="notas"/>
 </template>
 
 <script>
 
 const columns = [
     {
-        name:     'nota',
+        name:     'Nota',
         label:    'Nota',
         align:    'left',
-        field:    'nota',
+        field:    'Nota',
         sortable: 'true'
     },
      {
@@ -23,10 +24,20 @@ const columns = [
         sortable: 'true'
     }
 ]
+
+    const rows = [{
+        //nota: 'Nota 1',
+       // prioridad: "Maxima"
+    }]
+
 export default {
+    props: {
+        notas: Array
+    },
     setup() {
         return{
-            columns
+            columns,
+            rows,
         }
     },
 }

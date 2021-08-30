@@ -9,7 +9,7 @@
         ref="myForm">
       
                 <div class="col-12 col-sm-6">
-                 <q-input label="Nombre de la nota" v-model="Nota" 
+                 <q-input label="Nombre de la nota" v-model.trim="Nota" 
                  lazy-rules
                  :rules="[ val => val && val.length > 0 || 'No Puede estar en blanco']"/>
                 </div>
@@ -20,36 +20,10 @@
                  lazy-rules
                  :rules="[ val => val && val.length > 0 || 'No Puede estar en blanco']"/>
                 </div>
-        
-            <div class="col-12 col-sm-12">
-            <q-editor v-model="editor"  :dense="$q.screen.lt.md"
-                :definitions="{
-                    save: {
-                    tip: 'Guardar task',
-                    icon: 'save',
-                    label: 'Guardar',
-                    handler: saveWork
-                    },
-                    upload: {
-                    tip: 'Actualizar Nube',
-                    icon: 'cloud_upload',
-                    label: 'Actualizar',
-                    handler: uploadIt
-                    }
-                }"
-                :toolbar="[
-                    ['bold', 'italic', 'strike', 'underline'],
-                    ['upload', 'save']]"/>
-            </div>
 
         <div class="col-12 col-sm-12">
         <q-card class="row"
         flat bordered v-for="(item,index) in tasks" :key="index" >
-          
-        <q-card-section class="col" v-html="item.texto" 
-        :class="item.estado ? 'tachar' : ''" />
-        <q-btn flat color="blue" @click="item.estado = !item.estado">Acción</q-btn>
-        <q-btn flat color="red" @click="eliminar(index)">Eliminar</q-btn>
                  
         </q-card>
         <div v-if="tasks.length == 0" class="flex flex-center">
@@ -58,7 +32,8 @@
         </div>
 
          <div class="col-12" >
-         <q-toggle label = "Aceptar los Términos " v-model="terminos"/>
+         <q-toggle label = "Aceptar los Términos "
+         v-model="terminos"/>
          </div>
                
          <div class="col-12 col-sm-12">
@@ -67,8 +42,7 @@
          </div>
          
          </q-form>
-
-         <pinta-notas/>
+         <pinta-notas class="q-mt-xl" :notas="notas"/>
 
         </q-page>
 </template>
@@ -88,7 +62,9 @@ export default {
         const Nota = ref(null)
         const seleccion = ref(null)
         const terminos = ref(false)
-        const opciones = ['Maxima', 'Regular','Minima']
+        const opciones = ['Maxima', 'Regular','Minima','Baja']
+
+        const notas = ref([])
 
         const procesarNota = () => {
             console.log('clic de nota en consola')
@@ -104,23 +80,26 @@ export default {
                     color: 'green-4',
                     textColor: 'white',
                     icon: 'cloud_done',
-                    message: 'Nota Guardad'
+                    message: 'Nota Guardada'
             }),
             
-             myForm.value.resetValidation();
-            reset()
+            myForm.value.resetValidation();
+
+            notas.value = [...notas.value, {
+                Nota: Nota.value,
+                prioridad: seleccion.value
+            }]
+
+              reset()
             }
-        }
+        } 
 
         const reset = () => {
-            Nota.value = null
-            seleccion.value = null 
-            terminos.value = false 
+            Nota.value = null;
+            seleccion.value = null ;
+            terminos.value = false;
         }
         return {
-             editor: ref(
-        ''
-      ),
             Nota,
             seleccion,
             opciones,
@@ -128,6 +107,7 @@ export default {
             terminos,
             reset,
             myForm,
+            notas,
 
          editor: '',
       tasks: [ 
@@ -165,7 +145,6 @@ export default {
   }).onOk(() => {
       console.log(index);
      this.tasks.splice(index, 1);
-    
   })
 }
 }
