@@ -1,8 +1,20 @@
 <template>
     <q-page padding>
         
-        <h5 class="text-center">Agregar Nueva Nota</h5>
+        <h5 class="text-center" >Agregar Nueva Nota</h5>
       
+      <div class="q-mt-md">
+       <q-tabs v-model="tab" inline-label
+       class="bg-positive  text-white shadow-2">
+
+        <q-tab name="mails" icon="mail" label="Mails"/>
+        <q-tab name="alarms" icon="alarm" label="Alarms" />
+        <q-tab name="photos" icon="photo" label="Photos" />
+        <q-tab name="addressbook" icon="people" label="Address Book" />
+      </q-tabs>
+      </div>
+
+          
         <q-form class="row q-col-gutter-md"
         @submit.prevent = "procesarNota"
         @reset="reset"
@@ -37,8 +49,8 @@
          </div>
                
          <div class="col-12 col-sm-12">
-         <q-btn label="Submit" color="dark" type="submit"/>
-         <q-btn label="Reset" color="brown-5" outline class="q-ml-sm" type="reset"/>
+         <q-btn label="Submit" color="positive" type="submit"/>
+         <q-btn label="Reset" color="dark" outline class="q-ml-sm" type="reset"/>
          </div>
          
          </q-form>
@@ -52,6 +64,7 @@ import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import { colors } from 'quasar'
 import PintaNotas from 'src/components/PintaNotas.vue'
+
 
 export default {
   components: { PintaNotas },
@@ -100,6 +113,7 @@ export default {
             terminos.value = false;
         }
         return {
+           tab: ref('mails'),
             Nota,
             seleccion,
             opciones,

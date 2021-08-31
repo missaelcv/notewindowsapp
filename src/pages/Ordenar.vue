@@ -2,6 +2,19 @@
   <div class="q-pa-md q-gutter-sm">
     <q-btn label="Informacion" color="primary" @click="dialog = true" />
 
+
+    <q-tabs
+        v-model="tab"
+        class="text-teal"
+      >
+        <q-tab name="mails" icon="mail" label="Mails" />
+        <q-tab name="alarms" icon="alarm" label="Alarms" />
+        <q-tab name="movies" icon="movie" label="Movies" />
+      </q-tabs>
+
+
+     
+
     <q-dialog
       v-model="dialog"
       persistent
@@ -46,6 +59,7 @@ import { ref } from 'vue'
 export default {
   setup () {
     return {
+        tab: ref('mails'),
       dialog: ref(false),
       maximizedToggle: ref(true)
 
