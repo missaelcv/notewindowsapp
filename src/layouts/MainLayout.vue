@@ -19,16 +19,6 @@
                 Inicio
               </q-item-section>
             </q-item>
-          
-            <q-item clickable v-ripple to="nueva" active-class="my-menu-link">
-              <q-item-section avatar>
-                <q-icon name="star" />
-              </q-item-section>
-
-              <q-item-section>
-               New Notas
-              </q-item-section>
-            </q-item>
 
             <q-item clickable v-ripple to="ordenar" active-class="my-menu-link">
               <q-item-section avatar>

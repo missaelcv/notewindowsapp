@@ -37,12 +37,7 @@
     </q-card>
     </q-dialog>
 
-     <q-card-section>
-        <div class="text-h6">Our Changing Planet</div>
-        <div class="text-subtitle2">by John Doe</div>
-      </q-card-section>
-
-  </div>
+    </div>
 </template>
 
 <script>
