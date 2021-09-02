@@ -54,6 +54,8 @@
          </div>
          
          </q-form>
+
+         <herramientas/>
          <pinta-notas class="q-mt-xl" :notas="notas"/>
 
         </q-page>

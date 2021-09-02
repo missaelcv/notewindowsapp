@@ -1,21 +1,6 @@
 <template>
 <q-page padding>
   <div class="col-12 col-sm-6">
-<q-table grid class="text-center"
-      grid-header
-      :rows="rows"
-      :columns="columns"
-      row-key="name"
-      :filter="filter"
-      hide-header>
-      <template v-slot:top-right >
-        <q-input class="text-rigth" borderless dense debounce="300" v-model="filter" placeholder="Search" align='rigth'>
-          <template v-slot:append>
-          <q-icon  name="search" />
-          </template>
-          </q-input>
-          </template>
-        </q-table>
 
   <div class="q-pa-md q-gutter-sm" style="max-width: 400px">
   <div class="jumbotron flex flex-center">
