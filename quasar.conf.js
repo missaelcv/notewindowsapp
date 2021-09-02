@@ -91,7 +91,7 @@ module.exports = configure(function (ctx) {
           secondary: '#26A69A',
           accent: '#9C27B0',
   
-          dark: '#c10015',
+          dark: '#080606',
   
           positive: '#21BA45',
           negative: '#C10015',

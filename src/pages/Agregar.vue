@@ -1,7 +1,7 @@
 <template>
     <q-page padding>
         
-        <h5 class="text-center" >Agregar Nueva Nota</h5>
+        <h5 class="text-center" >Agregar Nueva Nota.</h5>
       
       <div class="q-mt-md">
        <q-tabs v-model="tab" inline-label
@@ -14,7 +14,7 @@
       </q-tabs>
       </div>
 
-          
+        
         <q-form class="row q-col-gutter-md"
         @submit.prevent = "procesarNota"
         @reset="reset"

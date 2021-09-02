@@ -3,7 +3,8 @@
     no-data-label="Sin nota para mostrar"
     title="Notas Creadas"
     :columns= 'columns'
-    :rows="notas"/>
+    :rows="notas"
+    dark color="amber"/>
 </template>
 
 <script>
