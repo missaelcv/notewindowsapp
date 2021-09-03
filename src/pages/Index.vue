@@ -14,8 +14,15 @@
  <div class="text-center">
   <h6 class="text-center">Empieza a crear notas ya!!</h6>
         <div class="text-center">
-        <q-btn class="q-pa-ms  text-center" color="positive" href="#http://localhost:8081/#/nueva" label="New Note" />
+        <q-btn class="q-pa-ms  text-center" color="positive" 
+        href="" label="New Note" />
+        
+
+
+         <router-link to="/New Note">Crear Nueva Nota </router-link>
                 <q-tooltip class="bg-accent">Clic para continuar</q-tooltip>
+
+                  <router-view></router-view>
         </div>
          </div>
          </div>

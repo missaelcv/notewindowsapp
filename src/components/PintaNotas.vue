@@ -1,7 +1,7 @@
 <template>
     <q-table class="q-mt-md"
     no-data-label="Sin nota para mostrar"
-    title="Notas Creadas"
+     title="Notas Creadas"
     :columns= 'columns'
     :rows="notas"
     dark color="amber"/>

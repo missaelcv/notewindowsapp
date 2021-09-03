@@ -20,13 +20,13 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple to="herramienta" active-class="my-menu-link">
+            <q-item clickable v-ripple to="historia" active-class="my-menu-link">
               <q-item-section avatar>
                 <q-icon name="drafts" />
               </q-item-section>
 
               <q-item-section>
-                Herramienta
+                Historia
               </q-item-section>
             </q-item>
 
