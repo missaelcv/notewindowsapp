@@ -39,8 +39,24 @@
               Agregar 
               </q-item-section>
             </q-item>
+
+            <q-item clickable v-ripple to="settings"    :active="link === 'settings'" @click="link = 'settings'"
+        active-class="my-menu-link">
+        <q-item-section avatar>
+          <q-icon name="settings" />
+        </q-item-section>
+
+        <q-item-section>
+          Settings
+          </q-item-section>
+      </q-item>
+            
           </q-list>
         </q-scroll-area>
+
+        
+
+       
 
         <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
           <div class="absolute-bottom bg-transparent">
@@ -79,7 +95,8 @@ export default {
     const drawer = ref(false)
 
     return {
-      drawer 
+      drawer ,
+       link: ref('inbox')
     }
   }
 }
