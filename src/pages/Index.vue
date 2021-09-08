@@ -15,6 +15,7 @@
   <h6 class="text-center">Empieza a crear notas ya!!</h6>
         <div class="text-center">
         
+
                   <router-view></router-view>
 
             <div class="q-pa-md">
@@ -24,7 +25,7 @@
               color="positive"
               size="10px"
               skip-hijack/>
-            <q-btn color="positive" label="New Nota" @click="trigger" />
+            <q-btn color="positive" label="New Nota" glossy unelevated icon="camera_enhance" @click="trigger" />
           </div>
 
         </div>
