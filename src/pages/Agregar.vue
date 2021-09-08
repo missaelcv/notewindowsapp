@@ -58,14 +58,23 @@
       
          <pinta-notas class="q-mt-xl" :notas="notas"/>
 
+        <div class="q-pa-md">
+        <q-linear-progress :value="progress" :buffer="buffer" />
+        <q-linear-progress :value="progress" :buffer="buffer" color="warning" class="q-mt-sm" />
+        <q-linear-progress :value="progress" :buffer="buffer" color="negative" class="q-mt-sm" />
+        <q-linear-progress :value="progress" :buffer="buffer" color="secondary" class="q-mt-sm" />
+        </div>
+     
+
         </q-page>
 </template>
 
 <script>
 import { useQuasar } from 'quasar'
-import { ref } from 'vue'
+import { ref,  onMounted, onBeforeUnmount } from 'vue'
 import { colors } from 'quasar'
 import PintaNotas from 'src/components/PintaNotas.vue'
+
 
 
 export default {
@@ -78,6 +87,35 @@ export default {
         const seleccion = ref(null)
         const terminos = ref(false)
         const opciones = ['Maxima', 'Regular','Minima','Baja']
+
+          const progress = ref(0.01)
+          const buffer = ref(0.01)
+
+        let interval, bufferInterval
+
+    onMounted(() => {
+      interval = setInterval(() => {
+        if (progress.value >= 1) {
+          progress.value = 0.01
+          buffer.value = 0.01
+          return
+        }
+
+        progress.value = Math.min(1, buffer.value, progress.value + 0.1)
+      }, 700 + Math.random() * 1000)
+
+      bufferInterval = setInterval(() => {
+        if (buffer.value < 1) {
+          buffer.value = Math.min(1, buffer.value + Math.random() * 0.2)
+        }
+      }, 700)
+    })
+
+    onBeforeUnmount(() => {
+      clearInterval(interval)
+      clearInterval(bufferInterval)
+    })
+
 
         const notas = ref([])
 
@@ -115,6 +153,9 @@ export default {
             terminos.value = false;
         }
         return {
+           progress,
+           buffer,
+
            tab: ref('mails'),
             Nota,
             seleccion,

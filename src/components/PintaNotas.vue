@@ -18,10 +18,10 @@ const columns = [
         sortable: 'true'
     },
      {
-        name:     'prioridad',
+        name:     'Prioridad',
         label:    'Prioridad',
         align:    'left',
-        field:    'prioridad',
+        field:    'Prioridad',
         sortable: 'true'
     }
 ]
