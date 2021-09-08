@@ -14,15 +14,19 @@
  <div class="text-center">
   <h6 class="text-center">Empieza a crear notas ya!!</h6>
         <div class="text-center">
-        <q-btn class="q-pa-ms  text-center" color="positive" 
-        href="" label="New Note" />
         
-
-
-         <router-link to="/New Note">Crear Nueva Nota </router-link>
-                <q-tooltip class="bg-accent">Clic para continuar</q-tooltip>
-
                   <router-view></router-view>
+
+            <div class="q-pa-md">
+            <q-ajax-bar
+              ref="bar"
+              position="bottom"
+              color="positive"
+              size="10px"
+              skip-hijack/>
+            <q-btn color="positive" label="New Nota" @click="trigger" />
+          </div>
+
         </div>
          </div>
          </div>
@@ -36,6 +40,20 @@ import { useQuasar } from 'quasar'
 
 export default {
   setup () {
+     const bar = ref(null)
+
+          function trigger () {
+          const barRef = bar.value
+          barRef.start()
+
+          setTimeout(() => {
+            const barRef = bar.value
+            if (barRef) {
+              barRef.stop()
+            }
+          }, Math.random() * 3000 + 1000)
+        }
+
     const columns = [
   {
     name: 'oneNote',
@@ -62,7 +80,9 @@ const rows = [
       filter: ref(''),
       columns,
       rows,
-      val: ref(true)  
+      val: ref(true), 
+      bar,
+      trigger
     }
   }
 }
