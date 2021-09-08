@@ -7,6 +7,7 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: '/agregar', component: () => import('pages/Agregar.vue') },
       { path: '/historia', component: () => import('pages/Historia.vue') },
+      { path: '/settings', component: () => import('pages/Settings.vue') },
 
     ]
   },
