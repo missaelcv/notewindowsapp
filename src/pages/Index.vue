@@ -31,7 +31,7 @@
               color="positive"
               size="10px"
               skip-hijack/>
-            <q-btn color="positive" label="New Nota" glossy unelevated icon="camera_enhance" @click="trigger" />
+            <q-btn color="positive" label="New Nota"  glossy unelevated icon="camera_enhance" @click="trigger" />
           </div>
 
         </div>
@@ -43,13 +43,14 @@
 
 <script>
 import { ref } from 'vue'
-import { useQuasar } from 'quasar'
+import { useRouter  } from 'vue-router' 
 
 export default {
   setup () {
+    const router = useRouter()
      const bar = ref(null)
 
-          function trigger () {
+          const trigger =  () => {
           const barRef = bar.value
           barRef.start()
 
@@ -58,6 +59,7 @@ export default {
             if (barRef) {
               barRef.stop()
             }
+            router.push('/agregar')
           }, Math.random() * 3000 + 1000)
         }
 
