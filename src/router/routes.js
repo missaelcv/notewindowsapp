@@ -5,7 +5,11 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: '/agregar', component: () => import('pages/Agregar.vue') },
+      { path: '/agregar', component: () => import('pages/Agregar.vue'),
+      meta: {
+        title : 'Agregar Nota'
+      }
+     },
       { path: '/historia', component: () => import('pages/Historia.vue') },
       { path: '/settings', component: () => import('pages/Settings.vue') },
 
