@@ -27,5 +27,10 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
 
+  Router.beforeEach((to,form,next) => {
+    console.log(to.meta)
+    document.title = to.meta.title
+    next()
+  })
   return Router
 })
