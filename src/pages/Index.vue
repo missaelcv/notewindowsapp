@@ -2,6 +2,9 @@
 <q-page padding>
   <div class="col-12 col-sm-6">
 
+    
+     
+
   <div class="q-pa-md q-gutter-sm" style="max-width: 400px">
   <div class="jumbotron flex flex-center">
   <h4 class="display-4 q-mr-xs text-center"> Welcome to app Notes!</h4>
@@ -10,6 +13,9 @@
   que vallas a necesitar para futuros usos...</h6>
   <hr class="my-4">
   </div>
+   
+  
+
   
  <div class="text-center">
   <h6 class="text-center">Empieza a crear notas ya!!</h6>

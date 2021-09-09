@@ -1,14 +1,24 @@
 <template>
     <q-page padding>
         
+         <div class="col-12 col-sm-12">
+      <q-btn round icon="notifications">
+        <q-badge floating color="red" rounded />
+      </q-btn></div>
+      
         <h5 class="text-center" >Agregar Nueva Nota.</h5>
+
+          
+
       
       <div class="q-mt-md">
        <q-tabs v-model="tab" inline-label
        class="bg-positive  text-white shadow-2">
 
-        <q-tab name="mails" icon="mail" label="Mails"/>
+        <q-tab name="mails" icon="mail" label="Mails" />
+        <q-badge color="red" rounded floating />
         <q-tab name="alarms" icon="alarm" label="Alarms" />
+        <q-badge color="red" rounded floating />
         <q-tab name="photos" icon="photo" label="Photos" />
         <q-tab name="addressbook" icon="people" label="Address Book" />
       </q-tabs>
@@ -52,11 +62,15 @@
          <q-btn label="Submit" color="positive" type="submit"/>
          <q-btn label="Reset" color="dark" outline class="q-ml-sm" type="reset"/>
          </div>
+
+       
          
          </q-form>
 
       
          <pinta-notas class="q-mt-xl" :notas="notas"/>
+
+         <email/>
 
         <div class="q-pa-md">
         <q-linear-progress :value="progress" :buffer="buffer" />
