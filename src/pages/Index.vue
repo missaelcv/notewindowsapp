@@ -2,27 +2,20 @@
 <q-page padding>
   <div class="col-12 col-sm-6">
 
-    
-     
-
-  <div class="q-pa-md q-gutter-sm" style="max-width: 400px">
+  <div class="q-pa-md q-gutter-sm" >
   <div class="jumbotron flex flex-center">
-  <h4 class="display-4 q-mr-xs text-center"> Welcome to app Notes!</h4>
-  <h6 class=" col-12 col-sm col-md-3 lead text-center" >Esta aplicacion te ayudara a crear tus apuntes donde podras recorda con 
+  <h4 class="display-3 q-mr-xs text-center "> Welcome to app Notes!</h4>
+  </div>
+  
+  <h6 class=" col-12 col-sm col-md-4 lead text-justify"  >Esta aplicacion te ayudara a crear tus apuntes donde podras recorda con 
   tiempo y apunte rapidos que te ayudara para que no te falten cualquier dato importante 
   que vallas a necesitar para futuros usos...</h6>
   <hr class="my-4">
   </div>
-   
-  
-
-  
+  </div>
  <div class="text-center">
   <h6 class="text-center">Empieza a crear notas ya!!</h6>
         <div class="text-center">
-        
-
-                  <router-view></router-view>
 
             <div class="q-pa-md">
             <q-ajax-bar
@@ -31,13 +24,13 @@
               color="positive"
               size="10px"
               skip-hijack/>
-            <q-btn color="positive" label="New Nota"  glossy unelevated icon="camera_enhance" @click="trigger" />
+            <q-btn color="positive" label="New Nota"  glossy unelevated icon="camera_enhance"
+             @click="trigger" />
           </div>
 
         </div>
          </div>
-         </div>
-         </div>
+        
          </q-page>
 </template>
 

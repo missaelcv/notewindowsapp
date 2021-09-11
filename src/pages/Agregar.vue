@@ -1,15 +1,8 @@
 <template>
     <q-page padding>
-        
-         <div class="col-12 col-sm-12">
-      <q-btn round icon="notifications">
-        <q-badge floating color="red" rounded />
-      </q-btn></div>
-      
+   
+      <div class="col-12 col-sm-6">
         <h5 class="text-center" >Agregar Nueva Nota.</h5>
-
-          
-
       
       <div class="q-mt-md">
        <q-tabs v-model="tab" inline-label
@@ -63,10 +56,7 @@
          <q-btn label="Reset" color="dark" outline class="q-ml-sm" type="reset"/>
          </div>
 
-       
-         
          </q-form>
-
       
          <pinta-notas class="q-mt-xl" :notas="notas"/>
 
@@ -78,6 +68,7 @@
         <q-linear-progress :value="progress" :buffer="buffer" color="negative" class="q-mt-sm" />
         <q-linear-progress :value="progress" :buffer="buffer" color="secondary" class="q-mt-sm" />
         </div>
+          </div>
      
 
         </q-page>
