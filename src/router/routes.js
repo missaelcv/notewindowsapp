@@ -4,14 +4,25 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
+
+      { path: '', component: () => import('pages/Index.vue'),
+      meta : {
+        title : 'Inicio'
+      } ,
+    },
+
       { path: '/agregar', component: () => import('pages/Agregar.vue'),
       meta: {
         title : 'Agregar Nota'
       }
      },
+
       { path: '/historia', component: () => import('pages/Historia.vue') },
-      { path: '/settings', component: () => import('pages/Settings.vue') },
+
+      { path: '/settings', component: () => import('pages/Settings.vue'),
+      meta : {
+        title : 'Settings'
+      } },
 
     ]
   },
