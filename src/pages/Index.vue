@@ -1,18 +1,37 @@
 <template>
 <q-page padding>
   <div class="col-12 col-sm-6">
+      
+  
+  <div class="col-6 col-md-4">
+  <q-badge  color="teal"> Time: {{ time }} </q-badge>
+  </div>
+</div>
+
+
+    <q-btn icon="access_time" round color="primary">
+      <q-popup-proxy @before-show="updateProxy" transition-show="scale" transition-hide="scale">
+        <q-time v-model="proxyTime">
+          <div class="row items-center rigth-end q-gutter-sm">
+            <q-btn label="Cancel" color="primary" flat v-close-popup />
+            <q-btn label="OK" color="primary" flat @click="save" v-close-popup />
+          </div>
+        </q-time>
+      </q-popup-proxy>
+    </q-btn>
 
   <div class="q-pa-md q-gutter-sm" >
   <div class="jumbotron flex flex-center">
   <h4 class="display-3 q-mr-xs text-center "> Welcome to app Notes!</h4>
   </div>
-  
+   
   <h6 class=" col-12 col-sm col-md-4 lead text-justify"  >Esta aplicacion te ayudara a crear tus apuntes donde podras recorda con 
   tiempo y apunte rapidos que te ayudara para que no te falten cualquier dato importante 
   que vallas a necesitar para futuros usos...</h6>
   <hr class="my-4">
   </div>
-  </div>
+
+ 
  <div class="text-center">
   <h6 class="text-center">Empieza a crear notas ya!!</h6>
         <div class="text-center">
@@ -27,10 +46,9 @@
             <q-btn color="positive" label="New Nota"  glossy unelevated icon="camera_enhance"
              @click="trigger" />
           </div>
-
-        </div>
-         </div>
-        
+          </div>
+          </div>
+           
          </q-page>
 </template>
 
@@ -40,6 +58,8 @@ import { useRouter  } from 'vue-router'
 
 export default {
   setup () {
+     const time = ref('10:56')
+    const proxyTime = ref('10:56')
     const router = useRouter()
      const bar = ref(null)
 
@@ -84,8 +104,18 @@ const rows = [
       rows,
       val: ref(true), 
       bar,
-      trigger
-    }
+      trigger,
+       time,
+      proxyTime,
+
+      updateProxy () {
+        proxyTime.value = time.value
+      },
+
+      save () {
+        time.value = proxyTime.value
+      }
+    }  
   }
 }
 </script>
