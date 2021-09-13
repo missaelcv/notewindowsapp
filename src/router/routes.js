@@ -17,7 +17,10 @@ const routes = [
       }
      },
 
-      { path: '/historia', component: () => import('pages/Historia.vue') },
+      { path: '/historia', component: () => import('pages/Historia.vue'),
+      meta: {
+          title : 'Historia'
+      } },
 
       { path: '/settings', component: () => import('pages/Settings.vue'),
       meta : {
