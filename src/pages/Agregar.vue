@@ -73,14 +73,13 @@
 
          <email/>
 
-        <div class="q-pa-md">
-        <q-linear-progress :value="progress" :buffer="buffer" />
-        <q-linear-progress :value="progress" :buffer="buffer" color="warning" class="q-mt-sm" />
-        <q-linear-progress :value="progress" :buffer="buffer" color="negative" class="q-mt-sm" />
-        <q-linear-progress :value="progress" :buffer="buffer" color="secondary" class="q-mt-sm" />
-        </div>
-          </div>
-     
+    <div class="q-pa-md">
+    <q-btn size="sm" color="primary" @click="randomize" label="Change Model" />
+    <q-linear-progress reverse :value="progress" class="q-mt-md" />
+    <q-linear-progress reverse :value="progress" color="warning" class="q-mt-sm" />
+    <q-linear-progress reverse :value="progress" color="secondary" class="q-mt-sm" />
+    </div>
+    </div>
 
         </q-page>
 </template>
@@ -172,7 +171,9 @@ export default {
           input: ref(''),
       date: ref('2018/11/03'),
            progress,
-           buffer,
+      randomize () {
+        progress.value = Math.random()
+      },
 
            tab: ref('mails'),
             Nota,
