@@ -8,7 +8,6 @@
        <q-tabs v-model="tab" inline-label
        class="bg-positive  text-white shadow-2">
 
-        <q-tab name="mails" icon="mail" label="Mails" />
         <q-badge color="red" rounded floating />
         <q-tab name="alarms" icon="alarm" label="Alarms" />
         <q-badge color="red" rounded floating />
@@ -22,7 +21,19 @@
         @submit.prevent = "procesarNota"
         @reset="reset"
         ref="myForm">
-      
+
+          <div class="col-12 col-sm-6">
+          <q-input filled v-model="input" mask="date" :rules="['date']">
+            <template v-slot:append>
+              <q-icon name="event" class="cursor-pointer">
+                <q-popup-proxy :breakpoint="600">
+                  <q-date v-model="input" />
+                </q-popup-proxy>
+              </q-icon>
+              </template>
+            </q-input>
+          </div>
+        
                 <div class="col-12 col-sm-6">
                  <q-input label="Nombre de la nota" v-model.trim="Nota" 
                  lazy-rules
@@ -158,6 +169,8 @@ export default {
             terminos.value = false;
         }
         return {
+          input: ref(''),
+      date: ref('2018/11/03'),
            progress,
            buffer,
 

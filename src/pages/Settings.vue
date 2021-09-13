@@ -1,30 +1,17 @@
 <template>
-  <div class="q-pa-md q-gutter-sm">
+  <div class="q-pa-md">
 
-    <q-bar dense class="bg-black text-white">
-      <div>mobi-net</div>
-      <q-icon name="email" />
-      <q-space />
-      <q-icon name="bluetooth" />
-      <q-icon name="signal_wifi_4_bar" />
-      <q-icon name="signal_cellular_4_bar" />
-      <div class="gt-xs">100%</div>
-      <q-icon name="battery_full" />
-      <div>10:00AM</div>
-    </q-bar>
-
-    <q-bar dense class="bg-green text-white">
-      <div>mobi-net</div>
-      <q-icon name="email" />
-      <q-space />
-      <q-icon name="bluetooth" />
-      <q-icon name="signal_wifi_4_bar" />
-      <q-icon name="signal_cellular_4_bar" />
-      <div class="gt-xs">100%</div>
-      <q-icon name="battery_full" />
-      <div>10:00AM</div>
-    </q-bar>
-
+    <h4>Opcion de conection </h4>
+    <q-btn push color="primary" label="Ayuda">
+      <q-popup-proxy>
+        <q-banner>
+          <template v-slot:avatar>
+            <q-icon name="signal_wifi_off" color="primary" />
+          </template>
+          You have lost connection to the internet. This app is offline.
+        </q-banner>
+      </q-popup-proxy>
+    </q-btn>
   </div>
 </template>
 
