@@ -4,10 +4,9 @@
       <div class="col-12 col-sm-6">
         <h5 class="text-center" >Agregar Nueva Nota.</h5>
       
-      <div class="q-mt-md">
+       <div class="q-mt-md">
        <q-tabs v-model="tab" inline-label
        class="bg-positive  text-white shadow-2">
-
         <q-badge color="red" rounded floating />
         <q-tab name="alarms" icon="alarm" label="Alarms" />
         <q-badge color="red" rounded floating />
@@ -58,20 +57,19 @@
         </div>
 
          <div class="col-12" >
-         <q-toggle label = "Aceptar los Términos "
-         v-model="terminos"/>
-         </div>
+         <q-toggle label = "Aceptar los Términos "  v-model="terminos"/>
+        
                
          <div class="col-12 col-sm-12">
-         <q-btn label="Submit" color="positive" type="submit"/>
-         <q-btn label="Reset" color="dark" outline class="q-ml-sm" type="reset"/>
+         <q-btn label="Submit" color="primary"  type="submit"/>
+         <q-btn label="Reset" color="dark"  class="q-ml-sm" type="reset"/>
+         <q-btn label="Compartir" color="primary"   class="q-ml-sm" @click="show()" />
+         </div>
          </div>
 
-         </q-form>
+        </q-form>
       
          <pinta-notas class="q-mt-xl" :notas="notas"/>
-
-         <email/>
 
     <div class="q-pa-md">
     <q-btn size="sm" color="primary" @click="randomize" label="Change Model" />
@@ -97,11 +95,14 @@ export default {
     setup() {
         
         const myForm = ref(null);
+        
         const $q = useQuasar()
         const Nota = ref(null)
         const seleccion = ref(null)
         const terminos = ref(false)
         const opciones = ['Maxima', 'Regular','Minima','Baja']
+
+        //$q.bottomSheet({Nota}) // returns Object
 
           const progress = ref(0.01)
           const buffer = ref(0.01)
@@ -132,6 +133,59 @@ export default {
     })
 
 
+           function show (grid) {
+      $q.bottomSheet({
+        dark: true,
+        message: 'Bottom Sheet message',
+        grid,
+        actions: [
+          {
+            label: 'Drive',
+            img: 'https://cdn.quasar.dev/img/logo_drive_128px.png',
+            id: 'drive'
+          },
+          {
+            label: 'Keep',
+            img: 'https://cdn.quasar.dev/img/logo_keep_128px.png',
+            id: 'keep'
+          },
+          {
+            label: 'Google Hangouts',
+            img: 'https://cdn.quasar.dev/img/logo_hangouts_128px.png',
+            id: 'calendar'
+          },
+          {
+            label: 'Calendar',
+            img: 'https://cdn.quasar.dev/img/logo_calendar_128px.png',
+            id: 'calendar'
+          },
+          {},
+          {
+            label: 'Share',
+            icon: 'share',
+            id: 'share'
+          },
+          {
+            label: 'Upload',
+            icon: 'cloud_upload',
+            color: 'primary',
+            id: 'upload'
+          },
+          {},
+          {
+            label: 'John',
+            avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
+            id: 'john'
+          }
+        ]
+      }).onOk(action => {
+        // console.log('Action chosen:', action.id)
+      }).onCancel(() => {
+        // console.log('Dismissed')
+      }).onDismiss(() => {
+        // console.log('I am triggered on both OK and Cancel')
+      })
+    }
         const notas = ref([])
 
         const procesarNota = () => {
@@ -167,7 +221,8 @@ export default {
             seleccion.value = null ;
             terminos.value = false;
         }
-        return {
+        return { show ,
+          
           input: ref(''),
       date: ref('2018/11/03'),
            progress,
