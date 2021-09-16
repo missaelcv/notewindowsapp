@@ -1,109 +1,61 @@
 <template>
-  <q-page padding>
-     <div class="col-12 col-sm-6">
-    <h6 class=" col-12 col-sm col-md-4 lead text-justify">Ajustes de conection </h6>
+  <div class="q-pa-md">
+    <q-stepper
+      v-model="step"
+      ref="stepper"
+      alternative-labels
+      color="primary"
+      animated
+    >
+      <q-step
+        :name="1"
+        title="Select campaign settings"
+        icon="settings"
+        :done="step > 1"
+      >
+        For each ad campaign that you create, you can control how much you're willing to
+        spend on clicks and conversions, which networks and geographical locations you want
+        your ads to show on, and more.
+      </q-step>
 
-    <div class="q-gutter-md row">
-      
-      <q-btn color="primary" label="Flip Menu">
-        <q-menu transition-show="flip-right" transition-hide="flip-left">
-          <q-list style="min-width: 100px">
-            <q-item clickable>
-              <q-item-section>Having fun</q-item-section>
-            </q-item>
-            <q-item clickable>
-              <q-item-section>Crazy for transitions</q-item-section>
-            </q-item>
-            <q-separator />
-            <q-item clickable>
-              <q-item-section>Mind blown</q-item-section>
-            </q-item>
-          </q-list>
-        </q-menu>
-      </q-btn>
+      <q-step
+        :name="2"
+        title="Create an ad group"
+        caption="Optional"
+        icon="create_new_folder"
+        :done="step > 2"
+      >
+        An ad group contains one or more ads which target a shared set of keywords.
+      </q-step>
 
-      <q-btn color="primary" label="Scale Menu">
-        <q-menu
-          transition-show="scale"
-          transition-hide="scale">
+      <q-step
+        :name="3"
+        title="Create an ad"
+        icon="add_comment"
+      >
+        Try out different ad text to see what brings in the most customers, and learn how to
+        enhance your ads using features like ad extensions. If you run into any problems with
+        your ads, find out how to tell if they're running and how to resolve approval issues.
+      </q-step>
 
-          <q-list style="min-width: 100px">
-            <q-item clickable>
-              <q-item-section>Having fun</q-item-section>
-            </q-item>
-            <q-item clickable>
-              <q-item-section>Crazy for transitions</q-item-section>
-            </q-item>
-            <q-separator />
-            <q-item clickable>
-              <q-item-section>Mind blown</q-item-section>
-            </q-item>
-          </q-list>
-        </q-menu>
-      </q-btn>
-
-      <q-btn color="primary" label="Jump Menu">
-        <q-menu  transition-show="jump-down" transition-hide="jump-up">
-
-          <q-list style="min-width: 100px">
-            <q-item clickable>
-              <q-item-section>Having fun</q-item-section>
-            </q-item>
-            <q-item clickable>
-              <q-item-section>Crazy for transitions</q-item-section>
-            </q-item>
-            <q-separator />
-            <q-item clickable>
-              <q-item-section>Mind blown</q-item-section>
-            </q-item>
-          </q-list>
-        </q-menu>
-      </q-btn>
-
-      <q-btn color="primary" label="Rotate Menu">
-        <q-menu
-          transition-show="rotate"
-          transition-hide="rotate" >
-          <q-list style="min-width: 100px">
-            <q-item clickable>
-              <q-item-section>Having fun</q-item-section>
-            </q-item>
-            <q-item clickable>
-              <q-item-section>Crazy for transitions</q-item-section>
-            </q-item>
-            <q-separator />
-            <q-item clickable>
-              <q-item-section>Mind blown</q-item-section>
-            </q-item>
-          </q-list>
-        </q-menu>
-      </q-btn>
-
-   
-    
-
-    <q-btn push color="primary" label="Ayuda">
-      <q-popup-proxy>
-        <q-banner>
-          <template v-slot:avatar>
-            <q-icon name="signal_wifi_off" color="primary" />
-          </template>
-          You have lost connection to the internet. This app is offline.
-        </q-banner>
-      </q-popup-proxy>
-    </q-btn>
+      <template v-slot:navigation>
+        <q-stepper-navigation>
+          <q-btn @click="$refs.stepper.next()" color="primary" :label="step === 3 ? 'Finish' : 'Continue'" />
+          <q-btn v-if="step > 1" flat color="primary" @click="$refs.stepper.previous()" label="Back" class="q-ml-sm" />
+        </q-stepper-navigation>
+      </template>
+    </q-stepper>
   </div>
-   </div>
-  
-
-  
-  </q-page>
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
-    setup() {
-        
-    },
+  setup () {
+    return {
+      step: ref(1)
+    }
+  }
 }
 </script>
