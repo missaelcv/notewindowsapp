@@ -3,26 +3,14 @@
  
       <div class="col-12 col-sm-6">
         <h5 class="text-center" >Agregar Nueva Nota.</h5>
-      
-       <div class="q-mt-md">
-       <q-tabs v-model="tab" inline-label
-       class="bg-positive  text-white shadow-2">
-        <q-badge color="red" rounded floating />
-        <q-tab name="alarms" icon="alarm" label="Alarms" />
-        <q-badge color="red" rounded floating />
-        <q-tab name="photos" icon="photo" label="Photos" />
-        <q-tab name="addressbook" icon="people" label="Address Book" />
-      </q-tabs>
-      </div>
-
-        
+            
         <q-form class="row q-col-gutter-md"
         @submit.prevent = "procesarNota"
         @reset="reset"
         ref="myForm">
 
           <div class="col-12 col-sm-6">
-          <q-input  label="Fecha" filled v-model="input" mask="date" :rules="['date']">
+          <q-input  label="Fecha de Evento" filled v-model="input" mask="date" :rules="['date']">
             <template v-slot:append>
               <q-icon name="event" class="cursor-pointer">
                 <q-popup-proxy :breakpoint="600">
@@ -33,8 +21,6 @@
             </q-input>
              </div>
 
-       
-         
                 <div class="col-12 col-sm-6">
                  <q-input label="Nombre de la nota" v-model.trim="Nota" 
                  lazy-rules
@@ -48,27 +34,62 @@
                  :rules="[ val => val && val.length > 0 || 'No Puede estar en blanco']"/>
                 </div>
                 
-
-
-      
-     
-
-        <div class="col-12 col-sm-12">
-        <q-card class="row"
-        flat bordered v-for="(item,index) in tasks" :key="index" >
-                 
-        </q-card>
-        <div v-if="tasks.length == 0" class="flex flex-center">
-        <p class="text-h6">Sin Notas</p>
-        </div>
-        </div>
-
+        
          <div class="col-12 col-sm-6 text-center">
         <q-uploader class="text-center" url="http://localhost:4444/upload"
         label="Upload files"
         color="primary" square flat bordered
         style="max-width: 600 px" /> 
          </div>
+
+<div class="col-12 col-sm-12">
+      <div> <q-splitter  v-model="splitterModel" style="height: 250px">
+      <template v-slot:before>
+        <q-tabs v-model="tab" vertical  class="text-teal">
+          <q-tab name="mails" icon="mail" label="Mails" />
+          <q-tab name="alarms" icon="alarm" label="Alarms" />
+          <q-tab name="movies" icon="movie" label="Movies" />
+        </q-tabs>
+      </template>
+
+      <template v-slot:after>
+        <q-tab-panels v-model="tab" animated  swipeable vertical
+          transition-prev="jump-up"
+          transition-next="jump-up">
+          <q-tab-panel name="mails">
+            <div class="text-h4 q-mb-md">Mails</div>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+          </q-tab-panel>
+
+          <q-tab-panel name="alarms">
+            <div class="text-h4 q-mb-md">Alarms</div>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+          </q-tab-panel>
+
+          <q-tab-panel name="movies">
+            <div class="text-h4 q-mb-md">Movies</div>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+          </q-tab-panel>
+        </q-tab-panels>
+      </template>
+
+    </q-splitter>
+  </div>
+   </div>
+
+   <div class="col-12 col-sm-12">
+        <q-card class="row"
+        flat bordered v-for="(item,index) in tasks" :key="index" >     
+        </q-card>
+        <div v-if="tasks.length == 0" class="flex flex-center">
+        <p class="text-h6">Sin Notas</p>
+        </div>
+        </div>
+
 
          <div class="col-12" >
          <q-toggle label = "Aceptar los Términos "  v-model="terminos"/>
@@ -242,6 +263,8 @@ export default {
             terminos.value = false;
         }
         return { show ,
+           tab: ref('mails'),
+      splitterModel: ref(20),
           
           input: ref(''),
       date: ref('2018/11/03'),
