@@ -22,7 +22,7 @@
         ref="myForm">
 
           <div class="col-12 col-sm-6">
-          <q-input filled v-model="input" mask="date" :rules="['date']">
+          <q-input  label="Fecha" filled v-model="input" mask="date" :rules="['date']">
             <template v-slot:append>
               <q-icon name="event" class="cursor-pointer">
                 <q-popup-proxy :breakpoint="600">
@@ -33,19 +33,8 @@
             </q-input>
              </div>
 
-        <div class="col-12 col-sm-6 text-center">
-        <q-uploader class="text-center" url="http://localhost:4444/upload"
-        label="Upload files"
-        color="primary" square flat bordered
-        style="max-width: 600 px" /> 
-         </div>
+       
          
-      
-  
-
-           
-         
-        
                 <div class="col-12 col-sm-6">
                  <q-input label="Nombre de la nota" v-model.trim="Nota" 
                  lazy-rules
@@ -73,6 +62,13 @@
         <p class="text-h6">Sin Notas</p>
         </div>
         </div>
+
+         <div class="col-12 col-sm-6 text-center">
+        <q-uploader class="text-center" url="http://localhost:4444/upload"
+        label="Upload files"
+        color="primary" square flat bordered
+        style="max-width: 600 px" /> 
+         </div>
 
          <div class="col-12" >
          <q-toggle label = "Aceptar los Términos "  v-model="terminos"/>
