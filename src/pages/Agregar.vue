@@ -1,6 +1,6 @@
 <template>
     <q-page padding>
-   
+ 
       <div class="col-12 col-sm-6">
         <h5 class="text-center" >Agregar Nueva Nota.</h5>
       
@@ -29,9 +29,22 @@
                   <q-date v-model="input" />
                 </q-popup-proxy>
               </q-icon>
-              </template>
+                  </template>
             </q-input>
-          </div>
+             </div>
+
+        <div class="col-12 col-sm-6 text-center">
+        <q-uploader class="text-center" url="http://localhost:4444/upload"
+        label="Upload files"
+        color="primary" square flat bordered
+        style="max-width: 600 px" /> 
+         </div>
+         
+      
+  
+
+           
+         
         
                 <div class="col-12 col-sm-6">
                  <q-input label="Nombre de la nota" v-model.trim="Nota" 
@@ -45,6 +58,11 @@
                  lazy-rules
                  :rules="[ val => val && val.length > 0 || 'No Puede estar en blanco']"/>
                 </div>
+                
+
+
+      
+     
 
         <div class="col-12 col-sm-12">
         <q-card class="row"
@@ -91,6 +109,12 @@ import PintaNotas from 'src/components/PintaNotas.vue'
 
 
 export default {
+  methods: {
+    getUrl (files) {
+      return `http://localhost:4444/upload?count=${files.length}`
+    }
+  },
+
   components: { PintaNotas },
     setup() {
         
