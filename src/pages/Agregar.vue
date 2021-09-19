@@ -106,13 +106,17 @@
       
          <pinta-notas class="q-mt-xl" :notas="notas"/>
 
-    <div class="q-pa-md">
-    <q-btn size="sm" color="primary" @click="randomize" label="Change Model" />
-    <q-linear-progress reverse :value="progress" class="q-mt-md" />
-    <q-linear-progress reverse :value="progress" color="warning" class="q-mt-sm" />
-    <q-linear-progress reverse :value="progress" color="secondary" class="q-mt-sm" />
+    
     </div>
+
+     <div class="q-pa-md">
+    <div class="q-gutter-md">
+      <q-skeleton class="bg-teal" animation="pulse-y" />
+       <q-skeleton class="bg-dark" />
+        <q-skeleton class="bg-teal" animation="pulse-y" />
+      
     </div>
+  </div>
 
         </q-page>
 </template>
@@ -269,9 +273,7 @@ export default {
           input: ref(''),
       date: ref('2018/11/03'),
            progress,
-      randomize () {
-        progress.value = Math.random()
-      },
+     
 
            tab: ref('mails'),
             Nota,
