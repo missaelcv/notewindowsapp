@@ -3,7 +3,7 @@
       <q-header elevated class="bg-primary">
         <q-toolbar>
           <q-toolbar-title class="bg-gray">App The Note</q-toolbar-title>
-          <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
+          <q-btn label="Menu" flat @click="drawer = !drawer" round dense icon="menu" />
         </q-toolbar>
       </q-header>
       <q-drawer v-model="drawer" :width="200" :persistent='false' >
