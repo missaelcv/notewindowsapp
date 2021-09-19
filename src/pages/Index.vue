@@ -1,15 +1,24 @@
 <template>
 <q-page padding>
   <div class="col-12 col-sm-6">
-      
+
+      <div class="q-pa-md">
+    <div class="row items-start q-gutter-md">
+      <q-responsive :ratio="4/4" class="col" style="max-height: 150px">
+        <q-card class="column">
+          <q-img class="col" src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        </q-card>
+      </q-responsive>
+    </div>
+  </div>
+
   
   <div class="col-6 col-md-4">
   <q-badge  color="teal"> Time: {{ time }} </q-badge>
   </div>
 </div>
 
-
-    <q-btn icon="access_time" round color="primary">
+<q-btn icon="access_time" round color="primary">
       <q-popup-proxy @before-show="updateProxy" transition-show="scale" transition-hide="scale">
         <q-time v-model="proxyTime">
           <div class="row items-center rigth-end q-gutter-sm">
@@ -19,6 +28,12 @@
         </q-time>
       </q-popup-proxy>
     </q-btn>
+
+   
+ 
+    
+
+    
 
   <div class="q-pa-md q-gutter-sm" >
   <div class="jumbotron flex flex-center">
@@ -106,7 +121,8 @@ const rows = [
       bar,
       trigger,
        time,
-      proxyTime,
+      proxyTime,      // Reloj 
+     
 
       updateProxy () {
         proxyTime.value = time.value
