@@ -35,14 +35,18 @@
                  lazy-rules
                  :rules="[ val => val && val.length > 0 || 'No Puede estar en blanco']"/>
                 </div>
+
+
+  <div class="col-12 col-sm-6">
+        <q-file label="Clic para Subir Archivo" outlined v-model="model">
+        <template v-slot:prepend>
+          <q-icon name="attach_file" />
+        </template>
+      </q-file>
+       </div>
                 
         
-         <div class="col-12 col-sm-12 text-center">
-        <q-uploader class="text-center" url="http://localhost:4444/upload"
-        label="Upload files"
-        color="primary" square flat bordered
-        style="max-width: 600 px" /> 
-         </div>
+         
 
 <div class="col-12 col-sm-12">
       <div> <q-splitter  v-model="splitterModel" style="height: 250px">
@@ -286,6 +290,8 @@ export default {
           
           input: ref(''), //Fecha 
       date: ref('2018/11/20'),
+
+        model: ref(null), // btn de subir archivo
 
       
 
