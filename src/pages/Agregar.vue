@@ -10,9 +10,9 @@
         ref="myForm">
 
           <div class="col-12 col-sm-6">
-          <q-input  label="Fecha de Evento" filled v-model="input" mask="date" :rules="['date']">
+          <q-input   label="Fecha de Evento" color="dark"  filled v-model="input" mask="date" :rules="['date']">
             <template v-slot:append>
-              <q-icon name="event" class="cursor-pointer">
+              <q-icon name="event"   color="dark" class="cursor-pointer">
                 <q-popup-proxy :breakpoint="500">
                   <q-date v-model="input" />
                 </q-popup-proxy>
@@ -20,6 +20,8 @@
                   </template>
             </q-input>
              </div>
+
+           
 
                 <div class="col-12 col-sm-6">
                  <q-input label="Nombre de la nota" v-model.trim="Nota" 
@@ -35,7 +37,7 @@
                 </div>
                 
         
-         <div class="col-12 col-sm-6 text-center">
+         <div class="col-12 col-sm-12 text-center">
         <q-uploader class="text-center" url="http://localhost:4444/upload"
         label="Upload files"
         color="primary" square flat bordered
@@ -92,7 +94,7 @@
 
 
          <div class="col-12" >
-         <q-toggle label = "Aceptar los Términos "  v-model="terminos"/>
+         <q-toggle color="red" size="lg" label = "Aceptar los Términos "  v-model="terminos"/>
         
                
          <div class="col-12 col-sm-12">
@@ -130,6 +132,7 @@ import PintaNotas from 'src/components/PintaNotas.vue'
 
 
 export default {
+  
   methods: {
     getUrl (files) {
       return `http://localhost:4444/upload?count=${files.length}`
@@ -140,6 +143,7 @@ export default {
     setup() {
         
         const myForm = ref(null);
+        const fecha = ref(null)
         
         const $q = useQuasar()
         const Nota = ref(null)
@@ -254,7 +258,8 @@ export default {
 
             notas.value = [...notas.value, {
                 Nota: Nota.value,
-                prioridad: seleccion.value
+                prioridad: seleccion.value,
+                fecha : fecha.value
             }]
 
               reset()
@@ -265,14 +270,27 @@ export default {
             Nota.value = null;
             seleccion.value = null ;
             terminos.value = false;
+            fecha.value = null;
         }
-        return { show ,
+
+         const url = ref('https://placeimg.com/500/300/nature')
+         
+        return { 
+          url, //btn cambio de imagen 
+      refresh () {
+        url.value = 'https://placeimg.com/500/300/nature?t=' + Math.random()
+      }, //btn cambio de imagen 
+          show ,
            tab: ref('mails'),
       splitterModel: ref(20),
           
-          input: ref(''),
-      date: ref('2018/11/03'),
+          input: ref(''), //Fecha 
+      date: ref('2018/11/20'),
+
+      
+
            progress,
+           fecha, // Fecha de evento
      
 
            tab: ref('mails'),
@@ -290,6 +308,7 @@ export default {
       {texto: 'No.1', estado: false},
       ]
       }
+      
   },
   methods:{
    saveWork () {
