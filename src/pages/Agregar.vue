@@ -38,7 +38,8 @@
 
 
   <div class="col-12 col-sm-6">
-        <q-file label="Clic para Subir Archivo" outlined v-model="model">
+        <q-file   multiple label="Clic para Subir Archivo" color="dark" bg-color="primary" counter max-files="12" outlined v-model="model">
+            <q-icon name="folder_open" />
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
