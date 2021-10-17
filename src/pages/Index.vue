@@ -2,6 +2,8 @@
 <q-page padding>
   <div class="col-12 col-sm-6">
 
+    
+
       <div class="q-pa-md">
     <div class="row items-start q-gutter-md">
       <q-responsive :ratio="4/4" class="col" style="max-height: 150px">
@@ -11,11 +13,15 @@
       </q-responsive>
     </div>
   </div>
+
+  
   
       <div class="col-12 col-sm col-md-4 lead text-center">
       <q-badge  color="teal"> Time: {{ time }} </q-badge>
       </div>
     </div>
+
+    
     
   <div class="q-pa-md q-gutter-sm" >
   <div class="jumbotron flex flex-center">

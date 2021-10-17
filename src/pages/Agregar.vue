@@ -56,7 +56,7 @@
       <div> <q-splitter  v-model="splitterModel" style="height: 250px">
       <template v-slot:before>
         <q-tabs v-model="tab" vertical  class="text-teal">
-          <q-tab name="mails" icon="mail" label="Mails" />
+          <q-tab name="mails" icon="drafts" label="Mails" />
           <q-tab name="alarms" icon="alarm" label="Alarms" />
         </q-tabs>
       </template>
