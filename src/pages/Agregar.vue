@@ -2,7 +2,7 @@
     <q-page padding>
                 
       <div class="col-12 col-sm-6">
-        <h5 class="text-center" >Agregar Nueva Nota.</h5>
+        <h5 class="text-center" >Agregar Nueva Nota</h5>
             
         <q-form class="row q-col-gutter-md"
         @submit.prevent = "procesarNota"
@@ -46,8 +46,11 @@
       </q-file>
        </div>
                 
+             <div class = "text-justify"> </div>
+          <div class="text-h5 q-mb-md">Herramientas Extras</div>
+
+
         
-         
 
 <div class="col-12 col-sm-12">
       <div> <q-splitter  v-model="splitterModel" style="height: 250px">
@@ -55,7 +58,6 @@
         <q-tabs v-model="tab" vertical  class="text-teal">
           <q-tab name="mails" icon="mail" label="Mails" />
           <q-tab name="alarms" icon="alarm" label="Alarms" />
-          <q-tab name="movies" icon="movie" label="Movies" />
         </q-tabs>
       </template>
 
@@ -71,13 +73,6 @@
 
           <q-tab-panel name="alarms">
             <div class="text-h4 q-mb-md">Alarms</div>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-          </q-tab-panel>
-
-          <q-tab-panel name="movies">
-            <div class="text-h4 q-mb-md">Movies</div>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
           </q-tab-panel>
@@ -97,11 +92,9 @@
         </div>
         </div>
 
-
          <div class="col-12" >
          <q-toggle color="red" size="lg" label = "Aceptar los Términos "  v-model="terminos"/>
-        
-               
+              
          <div class="col-12 col-sm-12">
          <q-btn label="Submit" color="primary"  type="submit"/>
          <q-btn label="Reset" color="dark"  class="q-ml-sm" type="reset"/>
@@ -113,7 +106,6 @@
       
          <pinta-notas class="q-mt-xl" :notas="notas"/>
 
-    
     </div>
 
      <div class="q-pa-md">
@@ -133,8 +125,6 @@ import { useQuasar } from 'quasar'
 import { ref,  onMounted, onBeforeUnmount } from 'vue'
 import { colors } from 'quasar'
 import PintaNotas from 'src/components/PintaNotas.vue'
-
-
 
 export default {
   
@@ -185,7 +175,6 @@ export default {
       clearInterval(interval)
       clearInterval(bufferInterval)
     })
-
 
            function show (grid) {
       $q.bottomSheet({
