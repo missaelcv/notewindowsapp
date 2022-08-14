@@ -1,8 +1,8 @@
 <template>
     <q-layout view="lHh Lpr lff">
-      <q-header elevated class="bg-primary">
+      <q-header elevated class="bg-danger">
         <q-toolbar>
-          <q-toolbar-title class="bg-gray">App The Note</q-toolbar-title>
+          <q-toolbar-title class="danger">App The Note</q-toolbar-title>
           <q-btn label="Menu" flat @click="drawer = !drawer" round dense icon="menu" />
         </q-toolbar>
       </q-header>
@@ -14,7 +14,7 @@
               <q-item-section avatar>
                 <q-icon name="inbox" />
               </q-item-section>
-            
+
               <q-item-section>
                 Inicio
               </q-item-section>
@@ -36,7 +36,7 @@
               </q-item-section>
 
               <q-item-section>
-              Agregar 
+              Agregar
               </q-item-section>
             </q-item>
 
@@ -50,21 +50,17 @@
           Settings
           </q-item-section>
       </q-item>
-            
+
           </q-list>
         </q-scroll-area>
-
-        
-
-       
 
         <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
           <div class="absolute-bottom bg-transparent">
             <q-avatar size="56px" class="q-mb-sm">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png">
             </q-avatar>
-            <div class="text-weight-bold">Bloc and Notes</div>
-            <div>@blocandNote</div>
+            <div class="text-weight-bold">WaveSoft</div>
+            <div>@WaveSoft</div>
           </div>
         </q-img>
       </q-drawer>
@@ -108,5 +104,5 @@ export default {
   color: red;
   background: #F2C037
 }
-  
+
 </style>

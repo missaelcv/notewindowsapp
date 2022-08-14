@@ -1,25 +1,11 @@
-<template>
-  <h1>bg-transparent</h1>
-</template>
 
+<template>
+  <router-view />
+</template>
 <script>
-//import { defineComponent } from 'vue';
-import { onMounted } from "vue"
-import { auth } from "./Utils/firebase";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: "App",
-  setup(){
-    onMounted(() => {
-      auth.onAuthStateChanged((user) =>{
-          if (user){
-            console.log("Usuario Logeado");
-          } else {
-            console.log("Usuario No Logeado");
-          }
-        })
-     // Console.log("Hola Firebase esta funcionado");
-    });
-  },
-});
+  name: 'App'
+})
 </script>
